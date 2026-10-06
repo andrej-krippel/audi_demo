@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audi Chat</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
 
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: url("images/background.png") center / cover no-repeat;
+    }
+
+    .webrtc_widget_outer_wrapper {
+      width: min(480px, calc(100vw - 24px)) !important;
+      max-width: calc(100vw - 24px) !important;
+      height: min(720px, calc(100dvh - 32px)) !important;
+      max-height: calc(100dvh - 32px) !important;
+    }
+
+    .webrtc_widget_content_stack,
+    .webrtc_widget_container {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+    }
+
+    .webrtc_widget_transcript_section {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+    }
+
+    .webrtc_widget_transcript_wrapper,
+    .webrtc_transcript_container {
+      max-height: 100% !important;
+      overflow-y: auto !important;
+    }
+
+    @media (max-width: 520px) {
+      .webrtc_widget_outer_wrapper {
+        width: calc(100vw - 16px) !important;
+        max-width: calc(100vw - 16px) !important;
+        height: calc(100dvh - 24px) !important;
+        max-height: calc(100dvh - 24px) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
+  <script>
+    addEventListener("load", () => {
+      if (typeof window.initWebRTCWidget !== "function") {
+        console.error("Cognigy Click To Call script did not load.");
+        return;
+      }
+
+      window.initWebRTCWidget(
+        "https://endpoint-trial.cognigy.ai/f5f671258043f8777480a87732e3824bb0aefea43fbfe6c62f43aed79befa952"
+      ).catch((error) => {
+        console.error("Could not initialize Cognigy Click To Call:", error);
+      });
+    });
+  </script>
+</body>
+</html>
