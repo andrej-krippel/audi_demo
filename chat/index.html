@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audi Chat</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
 
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: url("images/background.png") center / cover no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
+  <script>
+    if (typeof initWebchat !== "function") {
+      console.error("Cognigy Webchat script did not load.");
+    } else {
+      initWebchat(
+        "https://endpoint-trial.cognigy.ai/715175b8d155c3454e0445d05ff352610af68991982ba557db78e38a8270c82f"
+      ).catch((error) => {
+        console.error("Could not initialize Cognigy Webchat:", error);
+      });
+    }
+  </script>
+</body>
+</html>
